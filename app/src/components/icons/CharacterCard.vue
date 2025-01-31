@@ -1,16 +1,21 @@
-    <template>
-        <div>
-            <h2>{{ character.name }}</h2>
-            <img :src="character.image" alt="">
-        </div>
-    </template>
+<template>
+    <div class="character">
+        <h2>{{ character.name }}</h2>
+        <img class="image" :src="character.image" alt="">
+    </div>
+</template>
     
-    <script setup>
+<script setup>
     defineProps({
         character: Object,
-    })
-    </script>
+    })    
+</script>
     
-    <style scoped>
+<style scoped>
+
+.image{
+    height: 200px;
+    width: auto;
+}
     
-    </style>
+</style>
