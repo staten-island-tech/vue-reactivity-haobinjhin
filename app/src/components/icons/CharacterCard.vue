@@ -1,14 +1,21 @@
 <template>
-    <div class="character">
+    <button @click="console.log(character.name)" class="character">
         <h2>{{ character.name }}</h2>
         <img class="image" :src="character.image" alt="">
-    </div>
+    </button>
+
 </template>
     
 <script setup>
     defineProps({
         character: Object,
     })    
+
+function printname(name){
+    
+}
+
+    
 </script>
     
 <style scoped>
