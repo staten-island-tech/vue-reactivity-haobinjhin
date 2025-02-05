@@ -6,8 +6,9 @@ import { characters } from '../character.js'
 <template>
   <br>
   <div class="container">
-    <div class="shoppingcart">
-      <div class="cart">
+    <div class="shopping">
+      <div class="shoppingcart">
+        
         <h1>Shopping Cart</h1>
       </div>
     </div>
