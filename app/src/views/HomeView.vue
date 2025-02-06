@@ -7,7 +7,7 @@ import { characters } from '../character.js'
   <br>
   <div class="container">
     <div class="shopping">
-      <div class="shoppingcart">
+      <div ref="shoppingcart">
         
         <h1>Shopping Cart</h1>
       </div>

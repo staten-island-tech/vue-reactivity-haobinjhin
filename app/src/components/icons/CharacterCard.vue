@@ -1,15 +1,25 @@
 <script setup>
+    import { ref } from 'vue'
+    import { useTemplateRef, onMounted } from 'vue'
+
+    const amountofitems = ref(0)
+
+    const characters = useTemplateRef('character')
+
+    function increaseitems(){
+        amountofitems.value++
+    }
+
     defineProps({
         character: Object,
     })    
 
+
     let shoppingcart = []
 
-    function addtocart(event){
-        shoppingcart.push(event.target)
-        shoppingcart.forEach((item) => console.log(item))
+    function addtocart(){
+        
     }
-
 
 
     
@@ -17,10 +27,11 @@
 
 <template>
 
-    <button @click="addtocart" class="character">
+    <div ref="character">
         <h2>{{ character.name }}</h2>
         <img class="image" :src="character.image" alt="">
-    </button>
+        <button @click="increaseitems">{{ amountofitems }}</button>
+    </div>
 
 </template>    
 
