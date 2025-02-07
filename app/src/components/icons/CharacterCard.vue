@@ -6,20 +6,20 @@
 
     const characters = useTemplateRef('character')
 
-    function increaseitems(){
-        amountofitems.value++
-    }
+    
 
     defineProps({
         character: Object,
     })    
 
+    setup(){
+      const increaseitems = () =>{amountofitems.value++}
 
-    let shoppingcart = []
-
-    function addtocart(){
+      const returntrue = () => {}
         
-    }
+    }  
+
+
 
 
     
