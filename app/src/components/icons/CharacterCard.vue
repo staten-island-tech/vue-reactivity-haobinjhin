@@ -1,8 +1,8 @@
 <script setup>
     import { ref } from 'vue'
-    import { useTemplateRef, onMounted } from 'vue'
+    import { useTemplateRef } from 'vue'
 
-    const amountofitems = ref(0)
+    export const amountofitems = ref(0)
 
     const characters = useTemplateRef('character')
 
@@ -12,12 +12,11 @@
         character: Object,
     })    
 
-    setup(){
-      const increaseitems = () =>{amountofitems.value++}
 
-      const returntrue = () => {}
-        
-    }  
+        function increaseitems(){
+            amountofitems.value++
+        }
+
 
 
 
