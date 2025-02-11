@@ -1,5 +1,4 @@
 <script setup>
-    import { amountofitems } from './CharacterCard.vue';
    
     function decreaseitem(){
         amountofitems--
@@ -13,12 +12,12 @@
 
 
 <template>
-    <div ref = "item">
+  <!--   <div ref = "item">
         <h2>{{ character.name }}</h2>
         <img class = "image" :src="character.image" alt="">
         <button @click="decreaseitem">{{ amountofitems }}</button>
 
-    </div>
+    </div> -->
 </template>
 
 

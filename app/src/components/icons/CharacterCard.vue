@@ -2,9 +2,8 @@
     import { ref } from 'vue'
     import { useTemplateRef } from 'vue'
 
-    export const amountofitems = ref(0)
+    const amountofitems = ref(0)
 
-    const characters = useTemplateRef('character')
 
     
 
@@ -13,9 +12,11 @@
     })    
 
 
-        function increaseitems(){
-            amountofitems.value++
-        }
+    function increaseitems(){
+        amountofitems.value++
+        
+    }
+
 
 
 
@@ -31,6 +32,10 @@
         <img class="image" :src="character.image" alt="">
         <button @click="increaseitems">{{ amountofitems }}</button>
     </div>
+
+    <h1 v-if="amountofitems > 0"> h1</h1>
+
+
 
 </template>    
 
