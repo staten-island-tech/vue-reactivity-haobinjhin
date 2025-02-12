@@ -4,6 +4,12 @@ import Items from '@/components/icons/Items.vue';
 import ShoppingCards from '@/components/icons/ShoppingCards.vue';
 import { characters } from '../character.js';
 
+function buyhuman(){
+
+
+
+}
+
 
 
 </script>
@@ -14,7 +20,9 @@ import { characters } from '../character.js';
     <div class="shopping">
       <div ref="shoppingcart">
         <h1>Shopping Cart</h1>
-        <div><ShoppingCards v-for="character in characters" :key="character.name" :character="character"/></div>
+        <div>
+          <ShoppingCards v-for="character in characters" :key="character.name" :character="character"/>
+        </div>
         
       </div>
     </div>

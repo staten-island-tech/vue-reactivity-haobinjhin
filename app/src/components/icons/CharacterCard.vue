@@ -17,6 +17,11 @@
         
     }
 
+    function decreaseitem(){
+        amountofitems.value--
+    }
+    
+
 
 
 
@@ -30,10 +35,11 @@
     <div ref="character">
         <h2>{{ character.name }}</h2>
         <img class="image" :src="character.image" alt="">
-        <button @click="increaseitems">{{ amountofitems }}</button>
+        <button @click="increaseitems" >{{ amountofitems }}</button>
+        <button @click="decreaseitem" >{{ amountofitems }}</button>
     </div>
 
-    <h1 v-if="amountofitems > 0"> h1</h1>
+    <h1 v-if="amountofitems > 0">buy more than one</h1>
 
 
 
