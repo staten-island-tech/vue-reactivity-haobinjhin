@@ -20,11 +20,6 @@
     function decreaseitem(){
         amountofitems.value--
     }
-    
-
-
-
-
 
 
     

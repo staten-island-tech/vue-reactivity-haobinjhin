@@ -21,7 +21,6 @@ function buyhuman(){
       <div ref="shoppingcart">
         <h1>Shopping Cart</h1>
         <div>
-          <ShoppingCards v-for="character in characters" :key="character.name" :character="character"/>
         </div>
         
       </div>
