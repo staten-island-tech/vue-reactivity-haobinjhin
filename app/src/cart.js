@@ -1,3 +1,3 @@
-import { reactive } from "vue"
+import { ref } from "vue"
   
-export const store = reactive([])  
+export const store = ref([])  

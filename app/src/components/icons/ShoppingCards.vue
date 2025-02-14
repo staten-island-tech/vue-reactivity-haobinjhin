@@ -1,4 +1,17 @@
 <script setup>
+
+defineProps({
+
+  item:{
+    type: Object,
+    required: true
+  },
+
+  decreaseitem:{
+    type: Function,
+    required: true,
+  },
+})
    
 
 
@@ -8,9 +21,11 @@
 
 
 <template>
-  <div ref = "item">
-        <h2>{{ character.name }}</h2>
-        <img class = "image" :src="character.image" alt=" ">
+  <div class = "item">
+        <h2>{{ shoppingcart.value.name }}</h2>
+        <img class = "image" :src="shoppingcart.value.image" alt=" "/>
+        <button @click="decreaseitem" class="decrease">{{ amountofitems }}</button>
+        
 
     </div>
 </template>
