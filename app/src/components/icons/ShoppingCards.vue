@@ -1,4 +1,5 @@
 <script setup>
+import { amountofitems } from '@/cart';
 
 defineProps({
 
@@ -22,8 +23,8 @@ defineProps({
 
 <template>
   <div class = "item">
-        <h2>{{ shoppingcart.value.name }}</h2>
-        <img class = "image" :src="shoppingcart.value.image" alt=" "/>
+        <h2 class="name">{{ item.name }}</h2>
+        <img class = "image" :src="item.image" alt=" "/>
         <button @click="decreaseitem" class="decrease">{{ amountofitems }}</button>
         
 
@@ -33,5 +34,17 @@ defineProps({
 
 
 <style scoped>
+
+.character{
+    display: flex;
+    flex-wrap: wrap;
+    height: 300px;
+}
+
+
+.image{
+    height: 200px;
+    width: auto;
+}
 
 </style>

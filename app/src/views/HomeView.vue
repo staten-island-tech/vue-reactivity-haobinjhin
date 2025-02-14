@@ -11,6 +11,18 @@ import { store } from '@/cart.js';
 
   function buyhuman(character){
     shoppingcart.value.push({...character})
+
+    function countdups(list, dups){
+      let dupli = 0
+      list.forEach((item) => {if (item === dups){ dupli++ }});
+      return dupli
+    }
+
+    if(countdups(shoppingcart, character) > 1){
+      shoppingcart.filter(character)
+
+
+    }
     console.log(shoppingcart)
     }
 
@@ -35,7 +47,7 @@ import { store } from '@/cart.js';
       <div class="shoppingcart">
         <h1>Shopping Cart</h1>
         <ShoppingCards v-for="character in shoppingcart" 
-        :character="character"
+        :item="character"
         :key="character.name"
         :decreaseitem="() => nobuyhuman(shoppingcart, character)"/>
         <div>

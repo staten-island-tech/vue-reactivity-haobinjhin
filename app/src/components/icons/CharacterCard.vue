@@ -4,8 +4,8 @@ import { useTemplateRef } from 'vue'
 import { store } from '@/cart'
 import { characters } from '@/character'
 import { reactive } from 'vue'
+import { amountofitems } from '@/cart'
 
-    const amountofitems = ref(0)
 
 
 
@@ -36,7 +36,6 @@ import { reactive } from 'vue'
         <button @click="increaseitems" class="increase">{{ amountofitems }}</button>
     </div>
 
-    <h1 v-if="amountofitems > 0">buy more than one</h1>
 
 
 
@@ -47,6 +46,7 @@ import { reactive } from 'vue'
 .character{
     display: flex;
     flex-wrap: wrap;
+    height: 300px;
 }
 
 
