@@ -3,7 +3,7 @@ import CharacterCard from '@/components/icons/CharacterCard.vue';
 import Items from '@/components/icons/Items.vue';
 import ShoppingCards from '@/components/icons/ShoppingCards.vue';
 import { characters } from '../character.js';
-import { ref } from 'vue';
+import { reactive, ref } from 'vue';
 import { store } from '@/cart.js';
 
 
@@ -18,10 +18,16 @@ import { store } from '@/cart.js';
       return dupli
     }
 
-    if(countdups(shoppingcart, character) > 1){
-      shoppingcart.filter(character)
+    let extraitem = false
 
-
+    if(countdups(shoppingcart.value, character) > 1){
+      amountofitems == countdups(shoppingcart.value, character)
+      shoppingcart = shoppingcart.filter((item) => { if (item === character && !extraitem){
+        extraitem = true;
+        return false
+      }
+      return true
+    })
     }
     console.log(shoppingcart)
     }
@@ -49,6 +55,7 @@ import { store } from '@/cart.js';
         <ShoppingCards v-for="character in shoppingcart" 
         :item="character"
         :key="character.name"
+        :amountofitems="reactive(0)"
         :decreaseitem="() => nobuyhuman(shoppingcart, character)"/>
         <div>
         </div>

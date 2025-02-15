@@ -4,7 +4,6 @@ import { useTemplateRef } from 'vue'
 import { store } from '@/cart'
 import { characters } from '@/character'
 import { reactive } from 'vue'
-import { amountofitems } from '@/cart'
 
 
 
@@ -33,7 +32,7 @@ import { amountofitems } from '@/cart'
     <div class="character">
         <h2 class="name">{{ character.name }}</h2>
         <img class="image" :src="character.image" alt="">
-        <button @click="increaseitems" class="increase">{{ amountofitems }}</button>
+        <button @click="increaseitems" class="increase">Add 1</button>
     </div>
 
 

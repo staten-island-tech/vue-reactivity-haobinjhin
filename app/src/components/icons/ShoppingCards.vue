@@ -1,5 +1,9 @@
 <script setup>
-import { amountofitems } from '@/cart';
+import { ref } from 'vue';
+
+const items = ref(0)
+
+
 
 defineProps({
 
@@ -10,6 +14,11 @@ defineProps({
 
   decreaseitem:{
     type: Function,
+    required: true,
+  },
+
+  amountofitems:{
+    type: Object,
     required: true,
   },
 })
@@ -25,7 +34,8 @@ defineProps({
   <div class = "item">
         <h2 class="name">{{ item.name }}</h2>
         <img class = "image" :src="item.image" alt=" "/>
-        <button @click="decreaseitem" class="decrease">{{ amountofitems }}</button>
+        <h5 class="amountofitems">{{ items }}</h5>
+        <button @click="decreaseitem" class="decrease">Remove 1</button>
         
 
     </div>
