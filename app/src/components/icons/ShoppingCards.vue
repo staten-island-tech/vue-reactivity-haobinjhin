@@ -1,7 +1,4 @@
 <script setup>
-import { ref } from 'vue';
-
-const items = ref(0)
 
 
 
@@ -17,11 +14,18 @@ defineProps({
     required: true,
   },
 
-  amountofitems:{
+  amount:{
     type: Object,
     required: true,
   },
+
+  totalprice:{
+    type: Object,
+    required: true,
+  }
 })
+
+
    
 
 
@@ -34,7 +38,8 @@ defineProps({
   <div class = "item">
         <h2 class="name">{{ item.name }}</h2>
         <img class = "image" :src="item.image" alt=" "/>
-        <h5 class="amountofitems">{{ items }}</h5>
+        <h5 class="amount">{{ item.amount }}</h5>
+        <h5 class="totalprice">${{ item.price }}</h5>
         <button @click="decreaseitem" class="decrease">Remove 1</button>
         
 

@@ -1,27 +1,27 @@
 <script setup>
-import { ref } from 'vue'
-import { useTemplateRef } from 'vue'
-import { store } from '@/cart'
-import { characters } from '@/character'
-import { reactive } from 'vue'
 
 
 
 
-    defineProps({
-        character:{
-            type: Object,
-            required: true
-        },
 
-        increaseitems: {
-            type: Function,
-            required: true
-        },
+defineProps({
+    character:{
+        type: Object,
+        required: true
+    },
+
+    increaseitems: {
+        type: Function,
+        required: true
+    },
+
+    totalprice: {
+        type: Function,
+        required: true
+    }
 
 
-    })    
-
+})    
 
 
     
@@ -32,7 +32,9 @@ import { reactive } from 'vue'
     <div class="character">
         <h2 class="name">{{ character.name }}</h2>
         <img class="image" :src="character.image" alt="">
-        <button @click="increaseitems" class="increase">Add 1</button>
+        <h5 class="totalprice">${{ character.price }}</h5>
+        <button @click="increaseitems" class="increase">Add to Cart</button>
+        
     </div>
 
 
@@ -46,6 +48,8 @@ import { reactive } from 'vue'
     display: flex;
     flex-wrap: wrap;
     height: 300px;
+    padding: 10px;
+    border: 2px solid black;
 }
 
 

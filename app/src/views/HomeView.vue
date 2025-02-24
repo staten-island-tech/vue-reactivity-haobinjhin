@@ -1,44 +1,44 @@
 <script setup>
 import CharacterCard from '@/components/icons/CharacterCard.vue';
-import Items from '@/components/icons/Items.vue';
 import ShoppingCards from '@/components/icons/ShoppingCards.vue';
 import { characters } from '../character.js';
-import { reactive, ref } from 'vue';
-import { store } from '@/cart.js';
+import { ref } from 'vue';
 
 
   const shoppingcart = ref([])
 
   function buyhuman(character){
-    shoppingcart.value.push({...character})
+    const item = shoppingcart.value.find(item => item.name === character.name)
 
-    function countdups(list, dups){
-      let dupli = 0
-      list.forEach((item) => {if (item === dups){ dupli++ }});
-      return dupli
+    if (item){
+      item.amount += 1 
+      item.totalprice = item.amount*item.price
+
+    } else {
+      shoppingcart.value.push({...character, amount: 1, totalprice:character.price})
     }
 
-    let extraitem = false
+    
 
-    if(countdups(shoppingcart.value, character) > 1){
-      amountofitems == countdups(shoppingcart.value, character)
-      shoppingcart = shoppingcart.filter((item) => { if (item === character && !extraitem){
-        extraitem = true;
-        return false
-      }
-      return true
-    })
-    }
-    console.log(shoppingcart)
+
     }
 
-  function nobuyhuman(humans, character){
-    const getridofitem = humans.findIndex((human) => human === character)
-    if (getridofitem !== -1){
-      humans.splice(getridofitem, 1)
+  function nobuyhuman(character){
+
+    if (character.amount > 1){
+      character.amount -= 1 
+    } else {
+      const index = shoppingcart.value.indexOf(character)
+      shoppingcart.value.splice(index, 1)
     }
+
+    character.totalprice = character.amount*character.price
+
   }
 
+  function totalprice(){
+    return shoppingcart.value.reduce((total,item) => total + (item.totalprice || 0), 0)
+  }
 
   
 
@@ -47,22 +47,25 @@ import { store } from '@/cart.js';
 </script>
 
 <template>
-  <br>
+
   <div class="container">
     <div class="shopping">
       <div class="shoppingcart">
         <h1>Shopping Cart</h1>
+        <h2>Total: ${{ totalprice() }}</h2>
         <ShoppingCards v-for="character in shoppingcart" 
         :item="character"
         :key="character.name"
-        :amountofitems="reactive(0)"
-        :decreaseitem="() => nobuyhuman(shoppingcart, character)"/>
-        <div>
-        </div>
+        :amount="character.amount"
+        :price = "character.price"
+        :decreaseitem="() => nobuyhuman(character)"/>
+
+        
+
         
       </div>
     </div>
-    <div class="character"><CharacterCard v-for = "character in characters" 
+    <div class="charactercard"><CharacterCard v-for = "character in characters" 
       :key="character.name" 
       :character="character" 
       :increaseitems="() => buyhuman(character)"/></div>
@@ -74,18 +77,28 @@ import { store } from '@/cart.js';
 
 <style scoped>
 
-.character{
+
+.container{
+  width: 1860px;
+}
+
+.charactercard{
     display:flex;
     flex: 20%;
     flex-direction: row;
-    gap: 10px;
+    margin: 15px;
+    gap: 5px;
+    
+
 }
 
 .shoppingcart{
   display: flex;
   flex-direction: column;
-  border: 4px solid black;
+  border-right: 2px solid black;
   width: 400px;
+  height: 100vh;
+  overflow-y: auto;
   
 }
 
