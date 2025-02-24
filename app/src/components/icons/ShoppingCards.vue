@@ -38,8 +38,7 @@ defineProps({
   <div class = "item">
         <h2 class="name">{{ item.name }}</h2>
         <img class = "image" :src="item.image" alt=" "/>
-        <h5 class="amount">{{ item.amount }}</h5>
-        <h5 class="totalprice">${{ item.price }}</h5>
+        <h5 class="amount">Amount: {{ item.amount }}</h5>
         <button @click="decreaseitem" class="decrease">Remove 1</button>
         
 
@@ -50,16 +49,39 @@ defineProps({
 
 <style scoped>
 
-.character{
-    display: flex;
-    flex-wrap: wrap;
-    height: 300px;
+.name,.amount{
+  color: black;
+}
+
+
+.decrease{
+    box-shadow: 2px 2px black;
+    transition: all 0.15s ease;
+    height: 30px;
+    width: 80px;
+    border-radius: 4px;
+    outline: none;
+}
+
+.decrease:active{
+    transform: translate(1px, 1px);
+    box-shadow: none;
+}
+
+.item{
+    height: 320px;
+    width: 320px;
+    padding: 10px;
+    border: 2px solid rgb(79, 110, 121);
+    background-color: rgb(153, 200, 241);
 }
 
 
 .image{
     height: 200px;
-    width: auto;
+    width: 250px;
+    object-fit: cover;
+    overflow: hidden;
 }
 
 </style>

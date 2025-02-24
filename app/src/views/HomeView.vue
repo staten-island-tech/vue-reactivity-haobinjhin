@@ -17,10 +17,6 @@ import { ref } from 'vue';
     } else {
       shoppingcart.value.push({...character, amount: 1, totalprice:character.price})
     }
-
-    
-
-
     }
 
   function nobuyhuman(character){
@@ -40,6 +36,9 @@ import { ref } from 'vue';
     return shoppingcart.value.reduce((total,item) => total + (item.totalprice || 0), 0)
   }
 
+  function removeall(){
+    return shoppingcart.value = []
+  }
   
 
 
@@ -52,6 +51,7 @@ import { ref } from 'vue';
     <div class="shopping">
       <div class="shoppingcart">
         <h1>Shopping Cart</h1>
+        <button @click = "removeall" class="removeall">Clear All</button>
         <h2>Total: ${{ totalprice() }}</h2>
         <ShoppingCards v-for="character in shoppingcart" 
         :item="character"
@@ -65,11 +65,15 @@ import { ref } from 'vue';
         
       </div>
     </div>
-    <div class="charactercard"><CharacterCard v-for = "character in characters" 
+
+    <div class="charactercontain">
+      <div class="charactercard"><CharacterCard v-for = "character in characters" 
       :key="character.name" 
       :character="character" 
       :increaseitems="() => buyhuman(character)"/></div>
   </div>
+</div>
+    
 
   
 
@@ -78,26 +82,58 @@ import { ref } from 'vue';
 <style scoped>
 
 
+h1,h2{
+  color: black;
+}
+
+.removeall{
+    box-shadow: 2px 2px black;
+    transition: all 0.15s ease;
+    border-radius: 4px;
+    outline: none;
+}
+
+.removeall:active{
+  transform: translate(1px, 1px);
+  box-shadow: none;
+}
+
 .container{
   width: 1860px;
 }
 
+
 .charactercard{
+    max-width: 1860px;
     display:flex;
-    flex: 20%;
     flex-direction: row;
-    margin: 15px;
-    gap: 5px;
+    padding: 10px;
+    gap: 15px;
+    flex-wrap: wrap;
+    background-color: beige;
     
 
+}
+
+.charactercontain{
+  background-color: beige;
+  overflow-y: auto;
+  height: 900px;
+}
+
+.shopping{
+  background-color: beige;
 }
 
 .shoppingcart{
   display: flex;
   flex-direction: column;
-  border-right: 2px solid black;
+  border-right: 2px solid rgb(79, 110, 121) ;
   width: 400px;
-  height: 100vh;
+  overflow-y: auto;
+  gap: 10px;
+  padding: 10px;
+  height: 900px;
   overflow-y: auto;
   
 }
