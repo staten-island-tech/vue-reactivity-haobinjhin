@@ -1,6 +1,6 @@
 <script setup>
-import CharacterCard from '@/components/icons/CharacterCard.vue';
-import ShoppingCards from '@/components/icons/ShoppingCards.vue';
+import CharacterCard from '@/components/CharacterCard.vue';
+import ShoppingCards from '@/components/ShoppingCards.vue';
 import { characters } from '../character.js';
 import { ref } from 'vue';
 
@@ -55,9 +55,6 @@ import { ref } from 'vue';
         <h2>Total: ${{ totalprice() }}</h2>
         <ShoppingCards v-for="character in shoppingcart" 
         :item="character"
-        :key="character.name"
-        :amount="character.amount"
-        :price = "character.price"
         :decreaseitem="() => nobuyhuman(character)"/>
 
         
@@ -68,7 +65,6 @@ import { ref } from 'vue';
 
     <div class="charactercontain">
       <div class="charactercard"><CharacterCard v-for = "character in characters" 
-      :key="character.name" 
       :character="character" 
       :increaseitems="() => buyhuman(character)"/></div>
   </div>
