@@ -72,12 +72,6 @@ export const characters = [
     fact: "She’s a skilled hacker with a sharp wit, known for her intelligence." 
   },
   { 
-    name: "Clara", 
-    image: "/clara.png", 
-    price: 17, 
-    fact: "A young girl who’s shy but has a great strength within, alongside her robot companion." 
-  },
-  { 
     name: "Himeko", 
     image: "/himeko.png", 
     price: 13, 
